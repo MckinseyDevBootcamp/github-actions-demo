@@ -7,6 +7,7 @@ jobs:
   build-and-push:
     name: Build and push to AWS ECR
     runs-on: ubuntu-latest
+    environment: myenvironment
     steps:
     - name: Checkout
       uses: actions/checkout@v2
