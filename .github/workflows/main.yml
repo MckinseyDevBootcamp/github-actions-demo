@@ -17,6 +17,7 @@ jobs:
         # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-access-key-id: ASIASKRH5RYAOCY2UCLH
         aws-secret-access-key: x7jsBrE1D8GaaplX37jkrJrdUDKsyxiuyLKihRsG
+        aws-session-token: IQoJb3JpZ2luX2VjEH4aDGV1LWNlbnRyYWwtMSJIMEYCIQDMmnvIB1twaM2vPJrQ5MfZ7ZgfqM7xlMeLfLkg6pX0fAIhAOxwSuasmErxDlyElHvOYWiVArbF6KUbdc/Go3ttjPycKqIDCNf//////////wEQBBoMMTYwMDcxMjU3NjAwIgwALxYVWI4Nr3JpA4Iq9gLOVhBYpo4HBOjdWni2GOgJFOCln+dgXkZ+2KnMbxnUY8SACKlpg0d4cOsdd2fjD/G1IEoD5GKZySb+IkNWIk/xXs2esZnvP7zsRnRZ5fu+XvsU9cBEnHdheqLuN1KXXgpVqIi8ZYv/Tvfm9JObUxQ53mLNaRBkIHi497iLldV3AvMXmtaufDCDHMVbiq8P5KRnrWoWpxURSp0ljvYNS0dE1eB7n+DYEF0H+LAEp+g9CAHc2nW3nfAgpqWikEYGKaYQavIuz1bDFfBUPKjQ3uC1mzCfLQLVYcqDsHAkuE3Y8pozdu/Rfd7UEpHGAS76aaXdAnd7CE6GHbA1WPc3nx+J4oQ2yxEA93G+AwzXq/Xql/rZgxfA5La0j2G9orTfeFUB2ZsHR/ycGzwNibi7AbKjYjMZ4bL/iIdP6OFx17damxlIaiiX4ojV7sDgd7Gjg+J8Lq9cQxF+qPUtrYsYtnfHFjEfjXvYcGqr0a2BDlckXpHX5vhKPDCpntGkBjqlARwXIjy7fvQYMdNbEaBDKNRh1TER/ikB0MA96DFrlr6X34loOtMBpm3FNZvNfeC825LZ8JrRUpaio+snvfwc7X04G4jRax70skQYPtxFr+FjWv15LrHQoN1dU9HauRGpYFgTflxaRhubcbEaC+X5HXDXxNPgVW7pJGthQpzsLujtIuPEJT/NNhlawyO55thVpzi3XedsaZfBmDR6m6XPmQkBnYUMJA==
         aws-region: us-east-1
     
     - name: Login to AWS ECR
