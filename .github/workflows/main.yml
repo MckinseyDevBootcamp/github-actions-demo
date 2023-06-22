@@ -21,7 +21,7 @@ jobs:
       run: ./gradlew clean build
     
     - name: debug
-      run: echo "${{ toJson(secrets) }}"
+      run: echo "${{ toJson(env) }}"
     
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
