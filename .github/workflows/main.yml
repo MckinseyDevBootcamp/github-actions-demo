@@ -26,9 +26,9 @@ jobs:
         # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         # aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-        aws-access-key-id: ASIASKRH5RYAN3OEX2N6 
-        aws-secret-access-key: yKUQxZizUxSH2QZSKCXe3M2rmJ9wIDpd4fPRIBkU
-        aws-session-token: IQoJb3JpZ2luX2VjEH8aDGV1LWNlbnRyYWwtMSJHMEUCIQC75HDXLTLoqANK5bjusWCLTP1JYyn1bIm+oDJ/raZYRAIgPlcNzpKHAJtlVs+ix0wPPw+PVtDeiWX803FmK/8MTkwqogMI2P//////////ARAEGgwxNjAwNzEyNTc2MDAiDDPddQxYvIy6UQFVwCr2Ai96esWJrT9pA7F05bW+NSTq9XRYOJoNKT7VAGw/mxdI5SznWR6TxljIMo/rgLoWVJeoVl3wp70Fwh41lwK9GokXp+J3YQRSBzLwEU8T28QFIvTQYzdzGlbSbp0HszAQ2ZFHBD8y5c4GpeNs7eYFaGZJDDcGtLOTrFxrWnBLWlVfzzMfa5lkMGqKX6Lsa3aI0FDShcU+VF+ltQxs3oS5VyOskMRD5QLeocI19e3b8sf4IHH1xcMzcz+748eNmhNw6ANWtkDVGjT5dnm3rNp7zybMvbl5zfCREAngueYspd10kBeckiZlN1IGvYiOhiaUmE9FjIOf/aHfz8tcr2YTxYDUFk/K/lNhyEtPoSmNR5TiRPF59NO5rL9UI0rZhHb7FUWeE8HmZ9v5VovN4SIH0WDoiUiuSrrs/m8gDxUZ8B+aYm2GxAUpSuQ70VpirgTaqdz6N3Z5MJle+ubFh9MrcuSBueUbZ4Ry8XKdWyKtg/kx7je+pn7wMMK90aQGOqYBuBcj72nZEqLyoH5Gk1YQq7Mh5/fDcujiNfG0J5aGzI7dyl85UAIVMEbo5+wORKpDbTVI29NJ03+PU64CrSLnkY+li+j0wU3IpoAulMCVgRzBQql6+YPNubMKB7jQjaOGmWMWZsd2nuHItqUKLYFOsY8/cRZDHI3tTxjcplUOXuJsJPfTP7h+1x2kKBd/1SKot0YKUuWQHv1gXvwNreDYIH7djb22vw==
+        # aws-access-key-id: ASIASKRH5RYAN3OEX2N6 
+        # aws-secret-access-key: yKUQxZizUxSH2QZSKCXe3M2rmJ9wIDpd4fPRIBkU
+        # aws-session-token: IQoJb3JpZ2luX2VjEH8aDGV1LWNlbnRyYWwtMSJHMEUCIQC75HDXLTLoqANK5bjusWCLTP1JYyn1bIm+oDJ/raZYRAIgPlcNzpKHAJtlVs+ix0wPPw+PVtDeiWX803FmK/8MTkwqogMI2P//////////ARAEGgwxNjAwNzEyNTc2MDAiDDPddQxYvIy6UQFVwCr2Ai96esWJrT9pA7F05bW+NSTq9XRYOJoNKT7VAGw/mxdI5SznWR6TxljIMo/rgLoWVJeoVl3wp70Fwh41lwK9GokXp+J3YQRSBzLwEU8T28QFIvTQYzdzGlbSbp0HszAQ2ZFHBD8y5c4GpeNs7eYFaGZJDDcGtLOTrFxrWnBLWlVfzzMfa5lkMGqKX6Lsa3aI0FDShcU+VF+ltQxs3oS5VyOskMRD5QLeocI19e3b8sf4IHH1xcMzcz+748eNmhNw6ANWtkDVGjT5dnm3rNp7zybMvbl5zfCREAngueYspd10kBeckiZlN1IGvYiOhiaUmE9FjIOf/aHfz8tcr2YTxYDUFk/K/lNhyEtPoSmNR5TiRPF59NO5rL9UI0rZhHb7FUWeE8HmZ9v5VovN4SIH0WDoiUiuSrrs/m8gDxUZ8B+aYm2GxAUpSuQ70VpirgTaqdz6N3Z5MJle+ubFh9MrcuSBueUbZ4Ry8XKdWyKtg/kx7je+pn7wMMK90aQGOqYBuBcj72nZEqLyoH5Gk1YQq7Mh5/fDcujiNfG0J5aGzI7dyl85UAIVMEbo5+wORKpDbTVI29NJ03+PU64CrSLnkY+li+j0wU3IpoAulMCVgRzBQql6+YPNubMKB7jQjaOGmWMWZsd2nuHItqUKLYFOsY8/cRZDHI3tTxjcplUOXuJsJPfTP7h+1x2kKBd/1SKot0YKUuWQHv1gXvwNreDYIH7djb22vw==
         aws-region: us-east-1
     
     - name: Login to AWS ECR
@@ -44,3 +44,40 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+    
+    - name: deploy to ec2
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: github-actions-demo-repository
+        IMAGE_TAG: latest
+      uses: appleboy/ssh-action@master
+      with:
+        host: 35.175.143.254
+        username: ubuntu
+        key: MIIEpAIBAAKCAQEAxAVdniKMb1Yx1toS5cYNXUbRvSzoXa9C3NymO+oAMuWTYyAT
+        o4zjZgjJPw3uxbhdlv/fDjjRkPsv8EJYzofsEMvZIazT2lS+m+Qa38ieaNVRboxb
+        bWfHU0oQ/M5Ai4xHUweG3KlyC+1ybEZwkTlhFMv0qvwPv24hB6ZciaaCOUHD4Lpf
+        FvibnmPGe1iV454IzkN7nyRDKrIR4mDb+0GenKZGrXh2jMYnlXX2pjRAKZPV1HbE
+        F2Nr689tp3+7wXpSZiJvYpHMm1XTwCRiNi1K5qntUyV4ICc/jttWWP765ZJl1X6a
+        Kcj+CpnMLvaRcAEbZ2KHdQegFL7gLat0z3a3LQIDAQABAoIBAAqPq3KYs+5Pu5Gy
+        4C/HEvNCnIxPvhlGFxklPkOeIPKdEerWUJiQP7RApu8hxgqbG1fGY3M1tnzUO8n7
+        GSPPiPWCtiktUaDCzh5CFPyXp4lIbQHCyC5F2CRxqiakyi96mGEt16NN8doYqgCR
+        bwE0ETn4ny8TM5oByf/Kg9Pax8tj2nowW3iKOXNLp77kK74kfce+r9R0ZP8wv66d
+        lwJqfCtdABdmZvuFpbIJ9rbtFxU8+dN6nkBxjXZ+5VjOt5mRy/RVgUUEDZxm1Dcq
+        P1xJIj3kYFQudRUIEqhXH2goBUquv6UD1wVgOvPRjCyJc8/LNAUUsF26NugUJwlT
+        2TGz3+ECgYEA9D5DSIGgup6VgTsJy0NOGJVrWZ3N/Cy9hpubHIV2SMfTXMaowGBE
+        FMHT7wK1o4NeQSktWA4E/lkGBjBSfGTGfVNGzsFxvagS6j2S4v5+ThRVUWkHbs/d
+        Cr85RbwyZrw+5X8RbCGYF6ARACd5Sy00gx8hdPZxcVZFQ3R5CLePamUCgYEAzXTf
+        zczUEsUAAMVaRe1dEQw4871QqXpiiXABcXLuT4jnQN+ZF0H+wk0YqKuziWmqvLqf
+        71S2FpGsV8EfcV3n/q3545URE+t4ztSIeABUZV2hzmg2KPYD5zSR6mJnsqIcA7nc
+        wXuYC3Xhd0URzZoWxs6efkXZWEQEXsXkl1YaqSkCgYAZkc8fbxqxjtqd/d1Hn1M0
+        tafYaPHgnZp11iKF+N7qPak+BDo0cZ+PAL+8PO9hH+alMbdiiY0yR4We7j4kcbRp
+        +GboTE4pCch5J1sSUoxMhkpsTG+PxUkhz+UiDNLF+J0pD4V2aYnvpz1AY+GJ4kCm
+        HYM2KHq1388+gZoONJFaFQKBgQC3n+ZKm+9KmzEmfzvwVXWhP+hCx4epAQ3CQg24
+        JH0jLntoeq7rn3sekyMf1N2QSZVkOfOpRm+7ehSrFZqRitlGwJ0fLuJliEWfrUoO
+        3lSPiACOZotJTp8sa8qhzbNabxJUri/D6T95trB9FYkU1cvXgWEcADeBcMDrJzjn
+        nPgVCQKBgQCaYDPOibEiZ+2vnP4arNfF3H3nyMepVniNBjWK4l1WPDmB66M3+pmM
+        /U1OU0h4j1bGWXYllmHFSJR+LS1Tqhw+TWKIWGp+ylR6XuXJNgTpyfQxNhJ/Rbx6
+        eYNzGG8/L5pC7aMqEiyiUvOEt7K+59r5cKgVzf/hh3KDPz7cR3T4yQ==
+        envs: PRIVATE_SSH_KEY,ECR_REGISTRY,ECR_REPOSITORY,
+      
