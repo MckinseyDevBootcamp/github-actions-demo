@@ -38,9 +38,6 @@ jobs:
         aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
         aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
-        # aws-access-key-id: ASIASKRH5RYAN3OEX2N6 
-        # aws-secret-access-key: yKUQxZizUxSH2QZSKCXe3M2rmJ9wIDpd4fPRIBkU
-        # aws-session-token: IQoJb3JpZ2luX2VjEIH//////////wEaDGV1LWNlbnRyYWwtMSJGMEQCIDmU89DEmNKKsLKTrAjaQFidSRvuOsaaWxzB51qDWN7sAiBpn/RWPLKrE9ekCJgisUcVLTK4cMQttzbT5544y4D9DyqiAwja//////////8BEAQaDDE2MDA3MTI1NzYwMCIMmRkiipCdHn7mSqJQKvYCpuXZzqnpzvFhgvw4ozKAb0EHBFQ/PFTZBe/WUTZPjqFn9Dlb1QA5G3zIFlydguRXSgT+CtmlNtZE2P1lGA/jrMXUi3tf62TURmmObGfmrSg2P5eI2iHFIm2B0bCJhTtCwRmwkvpxZb7P3TMiOTTwF4NWI5OEAgQ60tfWTPlvN8AhkkI714v0iyUseeC8gtIcpQD1oFTD7Dq0nthpIuWnDZ1K7FgZvjdBoU7wHOn/WjyAxfrXeTXckzwmvIBK3X6Kr8PivpRumo0nywt0M1olrW5g/nCYrY411L6D7X9O5u62vzJgPMvnJX9ipgfRd8Ha+1P5O1YIPzbinGwjbGtwijmXYMQcDIjukf9Vx2H03YcVmHVmCoX2kAlEyc2CbDZQ6R1UX62XcSZL0qigUkXzC5vDA2ntQ5ourL7ej7sWIp8avnLVqwvB0xcTIvpq4wQzBnnAr3Ng2iVb94kqLTF6ALztdJvDxK44Dp06nJHIvdIwKY5A7EwwjvLRpAY6pwG/t3cP0AqVtozlckG88jUBlZ1y3k9SVNh9HuHFXE7e4WggFXhrIHhNjZzhIsT5JOLwYAkLKpjJIGgXNbDlujNYiGSrT0FrqhEILp9oK7zy5HfFyfIODVqJuS3RqMQxJ8Hk0M4pX8BqSxJ4mdvXzKHNModFhwVeBmb6HFeTdFOw8A/P4CNUdDeYwL2hZrgNN3dcQA2RVggBsQA69bYT13KEsAHlbAFLow==
         aws-region: us-east-1
     
     - name: Login to AWS ECR
